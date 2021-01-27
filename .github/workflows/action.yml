@@ -30,3 +30,12 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
         run: python main.py
+      
+      # Send Message
+      - name: Send Message
+        uses: satak/webrequest-action@master
+        with:
+          url: https://api.twindy.org/message/wx
+          method: POST
+          payload: '{"content": "【Github Actions通知】\n\n[EUserv_extend]续约成功", "contentType": 1}'
+          headers: '{"Referer": "https://github.com"}'
